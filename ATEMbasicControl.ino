@@ -33,7 +33,7 @@ IPAddress switcherIp(192, 168, 3, 254);      // <= SETUP!  IP address of the ATE
 // The port number is chosen randomly among high numbers.
 ATEM AtemSwitcher(IPAddress(192, 168, 3, 254), 56417);  // <= SETUP (the IP address of the ATEM switcher)
 
-int camPins[] = {2,3,4,8,9};
+int camPins[] = {8,9,2,3,4};
 
 void setup() {
 
@@ -58,10 +58,11 @@ void setup() {
   AtemSwitcher.connect();
 }
 
-// For pushButtons:
-int pushButton = 0;
-int transBtn = 0;
+// For camBtns:
+int camBtn = 0;
 int ctrlBtn = 0;
+int cutBtn = 0 ;
+int autoBtn = 0 ;
 bool ctrl = false;
 
 void loop() {
@@ -73,43 +74,57 @@ void loop() {
   // digitalWrite(4, !AtemSwitcher.getPreviewTally(1));
   // digitalWrite(5, !AtemSwitcher.getPreviewTally(2));
 
-  for (int i=0; i <= sizeof(camPins); i++){
+  for (int i=0; i < (sizeof(camPins)/sizeof(int)); i++){
     if (digitalRead(camPins[i]))  {
-      if (pushButton != i)  {
-        pushButton = i;
+      if (camBtn != i)  {
+        camBtn = i;
         Serial.print("Select ");
         Serial.print(i+1, DEC);
         if (ctrl) {
           Serial.println(" to Preview");
-          // AtemSwitcher.changePreviewInput(i);
+      //    // AtemSwitcher.changePreviewInput(i);
         } else {
           Serial.println(" to Program");
-          // AtemSwitcher.changeProgramInput(i);
+      //    // AtemSwitcher.changeProgramInput(i);
         }
       }
     }
   }
-  if (digitalRead(5) && transBtn != 1) {
-    Serial.println("Cut");
-    // AtemSwitcher.doCut();
-    transBtn = 1;
-  } else if (digitalRead(6) && transBtn != 2){
-    Serial.println("Auto");
-    // AtemSwitcher.doAuto();
-    transBtn = 2;
-  } else {
-    transBtn = 0;
-  }
-  if (digitalRead(7) && ctrlBtn != 1) {
-    ctrl = !ctrl;
-    if (ctrl) {
-      Serial.println("CTRL 1");
-    } else {
-      Serial.println("CTRL 0");
+  
+  if (digitalRead(5)) {
+    if (cutBtn != 1) {
+      Serial.println("Cut");
+      // AtemSwitcher.doCut();
+      cutBtn = 1;
     }
-    ctrlBtn = 1;
-    // Write status to LED
+    delay(100);
   } else {
-    ctrlBtn = 0;
+    cutBtn = 0;
+  }
+  if (digitalRead(6)){
+    if (autoBtn != 1) {
+      Serial.println("Auto");
+      // AtemSwitcher.doAuto();
+      autoBtn = 1;
+    }
+    delay(100);
+  } else {
+    autoBtn = 0;
+  }
+  if (digitalRead(7)) {
+    if (ctrlBtn != 1) {
+      ctrl = !ctrl;
+      camBtn = 0;
+      if (ctrl) {
+        Serial.println("CTRL 1");
+      } else {
+        Serial.println("CTRL 0");
+      }
+      // Write status to LED
+      ctrlBtn = 1;
+    }
+    delay(100);
+  } else {
+    ctrlBtn = 0 ;
   }
 }
