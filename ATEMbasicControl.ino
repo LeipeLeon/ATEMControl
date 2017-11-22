@@ -33,7 +33,7 @@ IPAddress switcherIp(192, 168, 3, 254);      // <= SETUP!  IP address of the ATE
 // The port number is chosen randomly among high numbers.
 ATEM AtemSwitcher(IPAddress(192, 168, 3, 254), 56417);  // <= SETUP (the IP address of the ATEM switcher)
 
-int camPins[] = {8,9,2,3,4};
+int camPins[] = {4,8,9,2,3};
 // For camBtns:
 int camBtn = 0;
 int ctrlBtn = 0;
