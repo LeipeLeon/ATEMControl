@@ -34,6 +34,12 @@ IPAddress switcherIp(192, 168, 3, 254);      // <= SETUP!  IP address of the ATE
 ATEM AtemSwitcher(IPAddress(192, 168, 3, 254), 56417);  // <= SETUP (the IP address of the ATEM switcher)
 
 int camPins[] = {8,9,2,3,4};
+// For camBtns:
+int camBtn = 0;
+int ctrlBtn = 0;
+int cutBtn = 0 ;
+int autoBtn = 0 ;
+bool ctrl = false;
 
 void setup() {
 
@@ -61,13 +67,6 @@ void setup() {
   digitalWrite(A4, ! ctrl);
   digitalWrite(A5, ctrl);
 }
-
-// For camBtns:
-int camBtn = 0;
-int ctrlBtn = 0;
-int cutBtn = 0 ;
-int autoBtn = 0 ;
-bool ctrl = false;
 
 void loop() {
 
