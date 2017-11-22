@@ -85,19 +85,19 @@ void loop() {
         Serial.print(i+1, DEC);
         if (ctrl) {
           Serial.println(" to Preview");
-      //    // AtemSwitcher.changePreviewInput(i);
+          AtemSwitcher.changePreviewInput(i);
         } else {
           Serial.println(" to Program");
-      //    // AtemSwitcher.changeProgramInput(i);
+          AtemSwitcher.changeProgramInput(i);
         }
       }
     }
   }
-  
+
   if (digitalRead(5)) {
     if (cutBtn != 1) {
       Serial.println("Cut");
-      // AtemSwitcher.doCut();
+      AtemSwitcher.doCut();
       cutBtn = 1;
     }
     delay(100);
@@ -107,7 +107,7 @@ void loop() {
   if (digitalRead(6)){
     if (autoBtn != 1) {
       Serial.println("Auto");
-      // AtemSwitcher.doAuto();
+      AtemSwitcher.doAuto();
       autoBtn = 1;
     }
     delay(100);
