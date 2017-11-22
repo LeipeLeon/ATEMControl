@@ -48,6 +48,8 @@ void setup() {
   pinMode(9, INPUT);  // Cam 5
   // pinMode(4, OUTPUT);  // LED: 1 is on Program (Tally)
   // pinMode(5, OUTPUT);  // LED: 2 is on Program (Tally)
+  pinMode(A4, OUTPUT);  // LED
+  pinMode(A5, OUTPUT);  // LED
 
   // Start the Ethernet, Serial (debugging) and UDP:
   Ethernet.begin(mac,clientIp);
@@ -56,6 +58,8 @@ void setup() {
   // Initialize a connection to the switcher:
   AtemSwitcher.serialOutput(true);
   AtemSwitcher.connect();
+  digitalWrite(A4, ! ctrl);
+  digitalWrite(A5, ctrl);
 }
 
 // For camBtns:
@@ -122,6 +126,8 @@ void loop() {
       }
       // Write status to LED
       ctrlBtn = 1;
+      digitalWrite(A4, ! ctrl);
+      digitalWrite(A5, ctrl);
     }
     delay(100);
   } else {
