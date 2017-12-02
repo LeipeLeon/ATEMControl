@@ -31,7 +31,7 @@ IPAddress switcherIp(192, 168, 254, 254);      // <= SETUP!  IP address of the A
 
 // Connect to an ATEM switcher on this address and using this local port:
 // The port number is chosen randomly among high numbers.
-ATEM AtemSwitcher(IPAddress(192, 168, 3, 254), 56417);  // <= SETUP (the IP address of the ATEM switcher)
+ATEM AtemSwitcher(switcherIp, 56417);  // <= SETUP (the IP address of the ATEM switcher)
 
 int camPins[] = {4,8,9,2,3};
 // For camBtns:
