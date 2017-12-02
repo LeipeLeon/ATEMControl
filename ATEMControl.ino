@@ -33,7 +33,7 @@ IPAddress switcherIp(192, 168, 254, 254);      // <= SETUP!  IP address of the A
 // The port number is chosen randomly among high numbers.
 ATEM AtemSwitcher(switcherIp, 56417);  // <= SETUP (the IP address of the ATEM switcher)
 
-int camPins[] = {4,8,9,2,3};
+int camPins[] = {8,9,2,3,4};
 // For camBtns:
 int camBtn = 0;
 int ctrlBtn = 0;
@@ -44,14 +44,14 @@ bool ctrl = false;
 void setup() {
 
   // Set up pins for
-  pinMode(2, INPUT);  // Cam 4
-  pinMode(3, INPUT);  // Cam 5
-  pinMode(4, INPUT);  // Cam 1
+  pinMode(2, INPUT);  // Cam 3
+  pinMode(3, INPUT);  // Cam 4
+  pinMode(4, INPUT);  // Cam 5
   pinMode(5, INPUT);  // Cut
   pinMode(6, INPUT);  // Auto
   pinMode(7, INPUT);  // CTRL
-  pinMode(8, INPUT);  // Cam 2
-  pinMode(9, INPUT);  // Cam 3
+  pinMode(8, INPUT);  // Cam 1
+  pinMode(9, INPUT);  // Cam 2
   pinMode(A4, OUTPUT);  // LED
   pinMode(A5, OUTPUT);  // LED
 
@@ -83,10 +83,10 @@ void loop() {
         Serial.print(i+1, DEC);
         if (ctrl) {
           Serial.println(" to Preview");
-          AtemSwitcher.changePreviewInput(i);
+          AtemSwitcher.changePreviewInput(i+1);
         } else {
           Serial.println(" to Program");
-          AtemSwitcher.changeProgramInput(i);
+          AtemSwitcher.changeProgramInput(i+1);
         }
       }
     }
