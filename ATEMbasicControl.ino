@@ -44,16 +44,14 @@ bool ctrl = false;
 void setup() {
 
   // Set up pins for
-  pinMode(2, INPUT);  // Cam 1
-  pinMode(3, INPUT);  // Cam 2
-  pinMode(4, INPUT);  // Cam 3
+  pinMode(2, INPUT);  // Cam 4
+  pinMode(3, INPUT);  // Cam 5
+  pinMode(4, INPUT);  // Cam 1
   pinMode(5, INPUT);  // Cut
   pinMode(6, INPUT);  // Auto
   pinMode(7, INPUT);  // CTRL
-  pinMode(8, INPUT);  // Cam 4
-  pinMode(9, INPUT);  // Cam 5
-  // pinMode(4, OUTPUT);  // LED: 1 is on Program (Tally)
-  // pinMode(5, OUTPUT);  // LED: 2 is on Program (Tally)
+  pinMode(8, INPUT);  // Cam 2
+  pinMode(9, INPUT);  // Cam 3
   pinMode(A4, OUTPUT);  // LED
   pinMode(A5, OUTPUT);  // LED
 
