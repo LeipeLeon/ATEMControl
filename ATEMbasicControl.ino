@@ -23,8 +23,8 @@
 // IP address is an available address you choose on your subnet where the switcher is also present:
 byte mac[] = {
   0x90, 0xA2, 0xDA, 0x00, 0x6A, 0x84 };      // <= SETUP!  MAC address of the Arduino
-IPAddress clientIp(192, 168, 3, 253);        // <= SETUP!  IP address of the Arduino
-IPAddress switcherIp(192, 168, 3, 254);      // <= SETUP!  IP address of the ATEM Switcher
+IPAddress clientIp(192, 168, 254, 253);        // <= SETUP!  IP address of the Arduino
+IPAddress switcherIp(192, 168, 254, 254);      // <= SETUP!  IP address of the ATEM Switcher
 
 // Include ATEM library and make an instance:
 #include <ATEM.h>
